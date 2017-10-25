@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Student student;
@@ -19,8 +21,22 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this,StudentService.class);
         conn=new MyStudentServiceConn();
         bindService(intent,conn, Context.BIND_AUTO_CREATE);
-       String name=student.getStudentName(1);
-        Log.e("LBH",name);
+       new Thread()
+       {
+           @Override
+           public void run() {
+               try {
+                   Thread.sleep(2000);
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+               Looper.prepare();
+               String name=student.getStudentName(1);
+               Log.e("LBH",name);
+               Toast.makeText(MainActivity.this,name,Toast.LENGTH_LONG).show();
+               Looper.loop();
+           }
+       }.start();
     }
     class MyStudentServiceConn implements ServiceConnection
     {

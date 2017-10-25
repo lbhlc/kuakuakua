@@ -29,7 +29,7 @@ public class StudentService extends Service {
     }
     private String getname(int num)
     {
-        if (num>0&num<4)
+        if (num>0&&num<4)
         {
             return name[num];
         }
