@@ -10,13 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+
+        <service android:name=".StudentService" />
+        <service android:name=".AidlStudentService"
+            android:process=":romote">
+            <intent-filter>
+                <action android:name="com.example.aidlStudent" />
+
+            </intent-filter>
+        </service>
+
+        <activity android:name=".AidlActivity" />
+        <activity android:name=".ChooseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".StudentService"></service>
     </application>
 
 </manifest>
