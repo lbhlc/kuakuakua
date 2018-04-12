@@ -1,18 +1,14 @@
 package com.example.administrator.myservicetest;
-
 import android.app.Service;
 import android.content.Intent;
-import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
-
 /**
  * @author libohan
  *         邮箱:76681287@qq.com
  *         create on 2017/10/25.
  */
-
 public class AidlStudentService extends Service{
     String[] name=new String[]{"mao","jiang","deng"};
     @Nullable
